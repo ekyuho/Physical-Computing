@@ -43,6 +43,11 @@ void off()
 	server.send(200, "text/html", "turned off");
 }
 
+void whoami()
+{
+	server.send(200, "text/html; charset=utf-8", "나는 누구, 여긴어디, 123456");
+}
+
 
 void InitWebServer() 
 {
@@ -50,6 +55,7 @@ void InitWebServer()
 	server.on("/", handle_root);
 	server.on("/on", on);
 	server.on("/off", off);
+	server.on("/whoami", whoami);
 
     server.begin();
 }
