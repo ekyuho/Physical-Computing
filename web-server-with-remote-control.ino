@@ -28,23 +28,27 @@ const char index_html[] PROGMEM = R"rawliteral(
 //페이지 요청이 들어 오면 처리 하는 함수
 void handle_root()
 {
+	Serial.println("got /");
   server.send(200, "text/html", index_html);
 }
 
 void on()
 {
+	Serial.println("got /on");
 	digitalWrite(2, 1); 
 	server.send(200, "text/html", "turned on");
 }
 
 void off()
 {
+	Serial.println("got /off");
 	digitalWrite(2, 0);
 	server.send(200, "text/html", "turned off");
 }
 
 void whoami()
 {
+	Serial.println("got /whoami");
 	server.send(200, "text/html; charset=utf-8", "나는 누구, 여긴어디, 123456");
 }
 
