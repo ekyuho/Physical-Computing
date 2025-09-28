@@ -41,12 +41,12 @@ void loop() {
   }
 }
 
-int value=1;
+int cnt=1;
 void publishValue() {
   if (client.connected()) {
     // 발행할 값 (예: 센서 데이터 또는 고정값)
-    String value = "Hello MQTT! "+ String(value);
-    value++;
+    String value = "Hello MQTT! "+ String(cnt);
+    cnt++;
     
     // MQTT 발행
     client.publish("ewha/iot/2025", value.c_str());
