@@ -43,9 +43,9 @@ void loop() {
   }
   client.loop();
   
-  // 5초마다 값 발행
+  // 3초마다 값 발행
   static unsigned long lastTime = 0;
-  if (millis() - lastTime > 5000) {
+  if (millis() - lastTime > 3000) {
     publishValue();
     lastTime = millis();
   }
