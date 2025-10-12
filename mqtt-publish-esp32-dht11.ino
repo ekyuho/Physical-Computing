@@ -80,7 +80,9 @@ void publishValue() {
 
 
     // 발행할 값 (예: 센서 데이터 또는 고정값)
-    String value = String(cnt) + String("  ") + String("온도: ")+ String(t) + String(", 습도: ") + String(h);
+    String value = String(cnt) + String("  ") + String("온도: ")+ String(t) + String(", 습도: ") + String(h);   // 임의형태의 스트링 메시지
+    //String value = String("{\"cnt\":\"") + String(cnt) + String("\", \"온도\": \"")+ String(t) + String("\", \"습도\": \"") + String(h) + "\"}";  // JSON형식
+    Serial.println(value);
     cnt++;
     
     // MQTT 발행
