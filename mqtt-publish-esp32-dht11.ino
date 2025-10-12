@@ -80,7 +80,8 @@ void publishValue() {
 
 
     // 발행할 값 (예: 센서 데이터 또는 고정값)
-    String value = Strig("온도: ")+ String(t) + String(", 습도: ") + String(h);
+    String value = String(cnt) + String("  ") + String("온도: ")+ String(t) + String(", 습도: ") + String(h);
+    cnt++;
     
     // MQTT 발행
     client.publish("ewha/0317137263", value.c_str());
