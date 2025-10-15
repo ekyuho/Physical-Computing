@@ -5,6 +5,8 @@ import sys
 import requests
 import json
 
+APIKEY='use-your-own-thingspeak-apk-key'
+
 def on_connect(client, userdata, flags, rc, properties=None):
     print("Connected" )
     client.subscribe("ewha/0317137263")
@@ -20,7 +22,7 @@ client.connect("damoa.io", 1883)
 def doit(t, d):
     j=json.loads(d)
     print(j)
-    url=f'https://api.thingspeak.com/update?api_key=5DCGF3KHT7WS4H32&field1={j["온도"]}&field2={j["습도"]}'
+    url=f'https://api.thingspeak.com/update?api_key={APIKEY}&field1={j["온도"]}&field2={j["습도"]}'
     print(url)
     r=requests.get(url)
     print(r.text)
