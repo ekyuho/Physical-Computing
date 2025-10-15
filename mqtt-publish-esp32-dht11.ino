@@ -82,9 +82,9 @@ void loop() {
     client.loop(); // 연결되어 있을 때만 loop 호출
   }
   
-  // 15초마다 값 발행
+  // 16초마다 값 발행
   static unsigned long lastTime = 0;
-  if (millis() - lastTime > 15000) {
+  if (millis() - lastTime > 16000) {
     publishValue();
     lastTime = millis();
   }
