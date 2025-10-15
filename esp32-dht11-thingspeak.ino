@@ -6,7 +6,7 @@
 
 const char* ssid = "cookie2";
 const char* password = "0317137263";
-String serverName = "https://api.thingspeak.com/update?api_key=5DCGF3KHT7WS4H32";
+String serverName = "https://api.thingspeak.com/update?api_key=use-your-own-thingspeak-apk-key";
 
 #define DHTPIN 4
 #define DHTTYPE DHT11
