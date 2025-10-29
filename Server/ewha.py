@@ -25,7 +25,8 @@ stu={19700**: ['서**', 'Michael Jackson', 'Hydrogen', 'Seoul', 1847293650, 143]
  25670**: ['양**', 'Aretha Franklin', 'Vanadium', 'São Paulo', 1582739460, 194],
  25670**: ['이**', 'Ray Charles', 'Chromium', 'Buenos Aires', 8263945017, 103],
  25670**: ['임**', 'Shakira', 'Manganese', 'Sydney', 4739201856, 175],
- 25932**: ['임**', 'Andrea Bocelli', 'Iron', 'Cairo', 7015382649, 141]}
+ 25932**: ['임**', 'Andrea Bocelli', 'Iron', 'Cairo', 7015382649, 141],
+ 0317137263: ['김규호', 'Ray Charles', 'Chromium', 'Buenos Aires', 8263945017, 103]}
 
 def lookup(args):
     no=args.get("hakbun","")
