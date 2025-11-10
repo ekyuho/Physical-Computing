@@ -107,18 +107,18 @@ void publishValue() {
     distance_cm = (duration * 0.0343) / 2.0;
 
     //Serial.print("Distance: ");
-    Serial.println(distance_cm);
+    //Serial.println(distance_cm);
     //Serial.println(" cm");
   }
   
   // JSON 메시지 생성
   String value = String("{\"distance\":") + String(distance_cm) + "}";
-  Serial.println(value);
+  //Serial.println(value);
   cnt++;
   
   // MQTT 발행 (QoS 0)
   if (client.publish("ewha/kim/0317137263", value.c_str())) {
-    Serial.println("발행 성공: " + value);
+    Serial.println(value);
   } else {
     Serial.println("발행 실패!");
   }
