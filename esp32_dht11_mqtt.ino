@@ -130,9 +130,9 @@ void publishValue() {
   }
   
   // JSON 메시지 생성
-  String value = String("{\"cnt\":\"") + String(cnt) + 
-                 String("\", \"온도\": ") + String(t) + 
-                 String(, \"습도\": ") + String(h) + "}";
+  String value = String("{\"cnt\":") + String(cnt) + 
+                 String(", \"temperature\": ") + String(t) + 
+                 String(", \"humidity\": ") + String(h) + "}";
   Serial.println(value);
   cnt++;
   
