@@ -79,6 +79,14 @@ boolean reconnect() {
 }
 
 void loop() {
+  // WiFi 연결 확인 및 재연결
+  if (WiFi.status() != WL_CONNECTED) {
+    Serial.println("WiFi 연결 끊김 - 재연결 시도...");
+    WiFi.reconnect();
+    delay(5000);
+    return;
+  }
+
   // MQTT 연결 확인 및 재연결
   if (!client.connected()) {
     reconnect();
@@ -86,7 +94,7 @@ void loop() {
     client.loop(); // 연결되어 있을 때만 loop 호출
   }
   
-  // 16초마다 값 발행
+  // 10초마다 값 발행
   static unsigned long lastTime = 0;
   if (millis() - lastTime > 10000) {
     publishValue();
@@ -104,9 +112,9 @@ void publishValue() {
   }
   
   sensors_event_t event;
-  float t = 0;
-  float h = 0;
-  
+  float t = NAN;
+  float h = NAN;
+
   // 온도 읽기
   dht.temperature().getEvent(&event);
   if (isnan(event.temperature)) {
@@ -117,7 +125,7 @@ void publishValue() {
     Serial.println(F("°C"));
     t = event.temperature;
   }
-  
+
   // 습도 읽기
   dht.humidity().getEvent(&event);
   if (isnan(event.relative_humidity)) {
@@ -128,7 +136,13 @@ void publishValue() {
     Serial.println(F("%"));
     h = event.relative_humidity;
   }
-  
+
+  // 센서 읽기 실패 시 발행 스킵
+  if (isnan(t) || isnan(h)) {
+    Serial.println("센서 읽기 실패 - 발행 스킵");
+    return;
+  }
+
   // JSON 메시지 생성
   String value = String("{\"cnt\":") + String(cnt) + 
                  String(", \"temperature\": ") + String(t) + 
